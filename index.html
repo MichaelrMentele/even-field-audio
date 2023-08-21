@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+
+    <textarea id="url" placeholder="Audio url" rows="5" cols="50">https://upload.wikimedia.org/wikipedia/commons/transcoded/0/00/CELLO_LIVE_PERFORMANCES_JOHN_MICHEL-J_S_Bach_Gamba_Sonata_in_g_1st_mvt.ogg/CELLO_LIVE_PERFORMANCES_JOHN_MICHEL-J_S_Bach_Gamba_Sonata_in_g_1st_mvt.ogg.mp3</textarea>
+    <br>
+    
+    <!-- <button id="use-tone">Use Tone</button>
+    <button id="load">Load Other</button> -->
+    <button id="stop">Stop</button>
+    <button id="stereo">Stereo</button>
+    <button id="mono">Mono</button>
+    <button id="2e1">Simulate 2E1</button>
+    <button id="unilateral-stereo">Unilateral Stereo</button>
+    
     <script src="./renderer.js"></script>
   </body>
 </html>

@@ -1,17 +1,23 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+try {
+  require('electron-reloader')(module)
+} catch (_) {}
 
-
+let window;
 function createWindow() {
-  const window = new BrowserWindow({
+  window = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
 
   window.loadFile('index.html')
+  return window
 }
 
 app.on('window-all-closed', function () {
@@ -19,9 +25,12 @@ app.on('window-all-closed', function () {
 })
 
 app.whenReady().then(() => {
-  createWindow()
+  window = createWindow()
 
   app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) window = createWindow()
   })
+
+
 })
+
